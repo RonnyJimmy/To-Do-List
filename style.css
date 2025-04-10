@@ -1,0 +1,347 @@
+/* style.css - Full Screen Layout */
+
+/* --- Basic Reset and Font --- */
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    /* padding: 20px; <-- REMOVED */
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    background-color: #f4f7f6; /* Body background remains */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; <-- CHANGED */
+    align-items: stretch; /* Allow children to stretch vertically */
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* --- General Container Styles (Now Full Screen) --- */
+#access-screen,
+#list-container {
+    /* background-color: #ffffff; <-- REMOVED */
+    padding: 30px 35px; /* Keep padding for content */
+    /* border-radius: 10px; <-- REMOVED */
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); <-- REMOVED */
+    width: 100%; /* Full width */
+    /* max-width: 550px; <-- REMOVED */
+    /* margin: 20px auto; <-- REMOVED */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Take full viewport height */
+    box-sizing: border-box; /* Include padding in height/width */
+}
+
+/* Visibility Control */
+#list-container { display: none; }
+#list-container.visible { display: flex; }
+#access-screen.hidden { display: none; }
+
+
+/* --- Access Screen Specific Styles --- */
+#access-screen {
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+    justify-content: center; /* Center content vertically */
+}
+#access-screen h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+#access-screen p {
+    margin-bottom: 25px;
+    color: #555;
+    font-size: 1rem;
+}
+/* Limit width of the form itself for better readability on wide screens */
+#access-screen .form-content {
+    width: 100%;
+    max-width: 400px; /* Max width for the input/button area */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+#list-key-input {
+    width: 100%; /* Takes width of .form-content */
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #ffffff; /* White background to stand out */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow */
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#list-key-input:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15), 0 1px 3px rgba(0,0,0,0.05); /* Keep subtle shadow + focus */
+}
+#access-list-button {
+    width: 100%; /* Takes width of .form-content */
+    padding: 12px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+#access-list-button:hover {
+    background-color: #2980b9;
+}
+#access-list-button:active {
+    transform: translateY(1px);
+}
+.error-message {
+    color: #e74c3c;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+/* --- List Container Specific Styles --- */
+#list-container {
+    /* justify-content: center; <-- Removed, default is flex-start */
+}
+#list-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 0; /* Adjusted padding takes care of top space */
+    margin-bottom: 30px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    word-break: break-all;
+    padding-top: 20px; /* Add some padding above title */
+}
+
+/* Center the list content area */
+.list-content-area {
+    width: 100%;
+    max-width: 600px; /* Max width for the list area */
+    margin: 0 auto; /* Center the list area */
+    display: flex;
+    flex-direction: column;
+}
+
+
+#input-field {
+    width: 100%; /* Takes width of .list-content-area */
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    /* Use background and subtle shadow instead of border */
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#input-field:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15), 0 1px 3px rgba(0,0,0,0.05);
+}
+#add-button {
+    width: 100%; /* Takes width of .list-content-area */
+    padding: 12px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-bottom: 25px;
+}
+#add-button:hover {
+    background-color: #2980b9;
+}
+#add-button:active {
+    transform: translateY(1px);
+}
+
+/* List Styling */
+#shopping-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    width: 100%; /* Takes width of .list-content-area */
+    background-color: #ffffff; /* Give list a white background */
+    border-radius: 6px; /* Round corners of list block */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07); /* Add shadow to list block */
+    overflow: hidden; /* Ensures li backgrounds don't overflow radius */
+}
+#shopping-list li {
+    background-color: #fff; /* Keep items white */
+    padding: 15px 10px 15px 15px;
+    margin-bottom: 0; /* Remove margin, use border */
+    border-bottom: 1px solid #eee; /* Add border back for separation */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    font-size: 1rem;
+}
+#shopping-list li:last-child {
+   border-bottom: none; /* No border on last item */
+}
+#shopping-list li:hover {
+    background-color: #f9f9f9;
+}
+.item-text {
+    flex-grow: 1;
+    margin-right: 15px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    color: #444;
+}
+.remove-button {
+    background-color: transparent;
+    color: #aaa;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+.remove-button:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+#shopping-list li.empty-message {
+    background-color: transparent; /* Match list background */
+    color: #6c757d;
+    justify-content: center;
+    font-style: italic;
+    padding: 20px;
+    border-bottom: none;
+    border-radius: 0; /* Ensure no radius if it's the only item */
+}
+#shopping-list li.empty-message:hover {
+    background-color: transparent;
+    cursor: default;
+}
+#shopping-list li.empty-message .remove-button {
+    display: none;
+}
+
+/* Change List Button */
+#change-list-button {
+    width: auto;
+    align-self: center;
+    padding: 8px 20px;
+    /* background-color: #7f8c8d; <-- CHANGED */
+    background-color: transparent; /* Transparent background */
+    /* color: white; <-- CHANGED */
+    color: #3498db; /* Use theme blue for text */
+    /* border: none; <-- CHANGED */
+    border: 1px solid #3498db; /* Add theme blue border */
+    border-radius: 6px;
+    font-size: 0.9rem;
+    /* font-weight: normal; <-- Optional: adjust if needed */
+    font-weight: 500; /* Slightly bolder */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Added color transition */
+    margin-top: 25px; /* Increase top margin slightly */
+}
+
+#change-list-button:hover {
+    /* background-color: #6c7a7b; <-- CHANGED */
+    background-color: #3498db; /* Fill with blue on hover */
+    color: white; /* White text on hover */
+}
+
+#change-list-button:active {
+    transform: translateY(1px);
+    /* Optional: Slightly darker fill on active press */
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Add a focus style for accessibility */
+#change-list-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25); /* Subtle focus ring */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    /* Containers already full width, adjust padding */
+    #access-screen,
+    #list-container {
+        padding: 20px 15px; /* Reduce padding on mobile */
+    }
+
+     /* Reduce max-width for form/list areas on smaller screens */
+    #access-screen .form-content {
+        max-width: none; /* Allow form to use padding */
+    }
+     .list-content-area {
+        max-width: none; /* Allow list area to use padding */
+    }
+
+
+    #access-screen h2 { font-size: 1.4rem; }
+    #list-container h1 { font-size: 1.5rem; padding-top: 15px; }
+
+    #list-key-input, #input-field { padding: 10px 12px; }
+    #access-list-button, #add-button { padding: 11px 15px; }
+    #change-list-button { padding: 7px 15px; font-size: 0.85rem;}
+
+    #shopping-list li { padding: 12px 8px 12px 12px; font-size: 0.95rem;}
+    .item-text { margin-right: 10px; }
+    .remove-button { width: 24px; height: 24px; line-height: 24px; font-size: 1rem;}
+}
+
+/* Add wrapper divs in HTML */
+/* In index.html, wrap the access screen form elements */
+/* <div id="access-screen" class="access-container">
+    <h2>Access Your To-Do List</h2>
+    <p>Enter your list key (like a password):</p>
+    <div class="form-content"> <---- ADD THIS DIV
+        <input type="password" id="list-key-input" placeholder="List Key">
+        <button id="access-list-button">Access List</button>
+        <p id="access-error" class="error-message"></p>
+    </div> <---- CLOSE THIS DIV
+</div> */
+
+/* Wrap the list content elements */
+/* <div class="container" id="list-container">
+    <h1 id="list-title">To-Do List</h1>
+    <div class="list-content-area"> <---- ADD THIS DIV
+        <input type="text" id="input-field" placeholder="Add an item...">
+        <button id="add-button">Add to list</button>
+        <ul id="shopping-list">
+            </ul>
+        <button id="change-list-button">Change List</button>
+    </div> <---- CLOSE THIS DIV
+</div> */
